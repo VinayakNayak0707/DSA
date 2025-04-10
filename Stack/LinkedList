@@ -1,0 +1,62 @@
+package practi;
+
+public class StcLL {
+	public class Node{
+		int data;
+		Node next;
+		public Node(int data) {
+			this.data=data;
+			this.next=null;
+		}
+	}
+Node head;
+public void push(int data) {
+	Node newNode = new Node(data);
+	if(head==null) {
+		head = newNode;
+		return;
+	}
+	newNode.next=head;
+	head=newNode;
+	
+	
+}
+
+public void  pop() {
+	if(head==null) {
+		System.out.println("stack is empty");
+	}
+	head = head.next;
+}
+
+public void display() {
+	Node cur;
+	if(head==null) {
+		System.out.println("stack is empty");
+	}
+	cur=head;
+	while(cur!=null) {
+		System.out.print(cur.data+"->");
+		cur=cur.next;
+	}
+	System.out.print("NULL");
+	
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StcLL s = new StcLL();
+		System.out.println("Pushing Elements");
+		s.push(0);
+		s.push(1);
+		s.push(2);
+		s.push(3);
+		s.display();
+		System.out.println("");
+		System.out.println("After poping");
+		s.pop();
+		s.pop();
+		s.display();
+		
+	}
+
+}

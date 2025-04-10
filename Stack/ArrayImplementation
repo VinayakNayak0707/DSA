@@ -1,0 +1,44 @@
+package practi;
+import java.util.*;
+public class StcAl {
+	ArrayList<Integer>Stack =  new ArrayList<>();
+	
+	public void push(int data) {
+	    Stack.add(data);
+	}
+	
+	public void pop() {
+		if(isEmpty()) {
+			return;
+		}
+		Stack.remove(Stack.size()-1);
+	}
+	
+	public boolean isEmpty() {
+		return Stack.size()==0;
+	}
+	
+	public void print()
+	{
+		if(isEmpty()) {
+			System.out.println("stack is Empty");
+		}
+		System.out.println(Stack);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StcAl s = new StcAl();
+		System.out.println("Pushing Element");
+		s.push(0);
+		s.push(1);
+		s.push(2);
+		s.push(3);
+		s.print();
+		System.out.println("After poping some elements");
+		s.pop();
+		s.pop();
+		s.print();
+		
+		}
+
+}
