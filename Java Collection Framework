@@ -1,0 +1,45 @@
+#STACK USING CF,QUEUE USING CF
+
+1.STACK
+package vi;
+import java.util.*;
+public class StckJCF {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 Stack<Integer> stack = new Stack<>();
+	        stack.push(1);
+	        stack.push(2);
+	        stack.push(3);
+	        stack.push(4);
+
+	        while(!stack.isEmpty()) {
+	            System.out.println(stack.peek());
+	            stack.pop();
+	        }
+	}
+
+}
+
+2.QUEUE
+package practi;
+import java.util.*;
+public class QueueCollectionF {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Queue<Integer> q=  new LinkedList<>();
+		q.add(0);
+		q.add(1);
+		q.add(2);
+		q.add(3);
+		q.add(4);
+		q.add(5);
+		q.add(6);
+		System.out.println(q);
+		while(!q.isEmpty()) {
+			System.out.println("removed :"+q.remove());
+		}
+	}
+
+}
