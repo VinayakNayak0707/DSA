@@ -1,0 +1,255 @@
+# BASIC LINKED LIST OPERATIONS, STACK USING LL, CIRCULARQUEUE USING ARRAY
+
+1.BASIC LINKED LIST OPERATIONS
+package practi;
+
+public class LL {
+	public int size=0;
+	Node head;
+	public class Node{
+		int data;
+		Node next;
+		
+			 Node(int data) {
+				this.data =data;
+				this.next=null;
+				
+			}
+		}
+
+	
+	public void addfirst(int data) {
+		 Node newNode  = new Node(data);
+		 
+		 newNode.next = head;
+		 head=newNode;
+		 size++;
+	}
+	
+	public void removeLast() {
+		if(head.next == null) {
+			System.out.println("Empty");
+			
+		}
+		
+		Node cur,lastNode;
+		cur=head;
+		lastNode= head.next;
+		while(lastNode.next!=null) {
+			cur = cur.next;
+			lastNode=lastNode.next;
+		}
+		cur.next = null;
+		size--;
+	}
+	
+	public void removeFirst() {
+		if(head==null) {
+			System.out.println("Empty");
+		}
+		head=head.next;
+		size--;
+		
+	}
+	
+	public void addLast(int data) {
+		Node cur;
+		
+		Node newNode = new Node(data);
+		cur = head;
+		
+		if(head==null) {
+			head=newNode;
+			return;
+		}
+		while(cur.next!=null){
+			cur = cur.next;
+		}
+		cur.next=newNode;
+		size++;
+	}
+	
+	public void printList(){
+		Node cur = head;
+		
+		while(cur!=null) {
+			System.out.print(cur.data +"->");
+			cur=cur.next;
+			
+		}
+		System.out.println("NUll");
+		System.out.println("the sie of the list:"+size);
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		LL List =new LL();
+		
+		List.addfirst(1);
+		List.addfirst(2);
+		List.addfirst(3);
+		List.addLast(0);
+		List.printList();
+		System.out.println();
+		List.removeFirst();
+		List.removeLast();
+		List.printList();
+		
+		
+	}
+
+}
+
+2.STACK USING LL
+
+package practi;
+
+public class StcLL {
+	public class Node{
+		int data;
+		Node next;
+		public Node(int data) {
+			this.data=data;
+			this.next=null;
+		}
+	}
+Node head;
+public void push(int data) {
+	Node newNode = new Node(data);
+	if(head==null) {
+		head = newNode;
+		return;
+	}
+	newNode.next=head;
+	head=newNode;
+	
+	
+}
+
+public void  pop() {
+	if(head==null) {
+		System.out.println("stack is empty");
+	}
+	head = head.next;
+}
+
+public void display() {
+	Node cur;
+	if(head==null) {
+		System.out.println("stack is empty");
+	}
+	cur=head;
+	while(cur!=null) {
+		System.out.print(cur.data+"->");
+		cur=cur.next;
+	}
+	System.out.print("NULL");
+	
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StcLL s = new StcLL();
+		System.out.println("Pushing Elements");
+		s.push(0);
+		s.push(1);
+		s.push(2);
+		s.push(3);
+		s.display();
+		System.out.println("");
+		System.out.println("After poping");
+		s.pop();
+		s.pop();
+		s.display();
+		
+	}
+
+}
+
+3.CIRCULARQUEUE USING ARRAY
+
+package practi;
+
+public class QueueCirAr {
+	static class Queue{
+		static int arr[];
+		static int size;
+		static int rear = -1;
+		static int front = -1;
+		Queue(int size){
+			this.size=size;
+			 arr= new int[size];
+			}
+		
+		public boolean isEmpty() {
+			return rear ==-1&& front ==-1;
+		}
+		
+		public boolean isFull() {
+			return rear == front-1;
+		}
+		
+		public void add(int data) {
+			if(isFull()) {
+				System.out.println("queue is full");
+				return;
+			}
+			if(front==-1) {
+				front=0;
+			}
+			rear =(rear+1)%size;
+			arr[rear]=data;
+			System.out.println("added item:"+arr[rear]);
+		}
+		
+		public int remove() {
+			if(isEmpty()) {
+				System.out.println("queue is emprty");
+				return -1;
+			}
+			int res = arr[front];
+			if(front == rear) {
+				front = rear = -1;
+			}else {
+			front = (front+1)%size;
+			}
+			return res;
+			
+		}
+		public void display() {
+			if(isEmpty()) {
+				System.out.println("queue is emprty");
+				return;
+			}
+			for(int i =front;i<=rear;i++) {
+				System.out.println(arr[i]);
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Queue q = new Queue(5);
+		   q.add(1);
+	       q.add(2);
+	       q.add(3);
+	       q.add(4);
+	       q.add(5);
+	       System.out.println("removed elemnet"+q.remove());
+	       q.add(6);
+	       System.out.println("removed elemnet"+q.remove());
+	       q.add(7);
+	       
+	       while(!q.isEmpty()) {
+	    	   System.out.println(q.remove());
+	       }
+	      
+	       
+
+	}
+
+}
+
+
